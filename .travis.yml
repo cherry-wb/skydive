@@ -16,9 +16,9 @@ before_install:
 
 script:
     - make install
-    - make test GOFLAGS=-race VERBOSE=true TIMEOUT=1m
-    - make test.functionals GOFLAGS=-race GORACE="history_size=5" VERBOSE=true TIMEOUT=2m
-    - ./coverage.sh --coveralls
+    #- make test GOFLAGS=-race VERBOSE=true TIMEOUT=1m
+    - make test.functionals GOFLAGS=-race GORACE="history_size=5" VERBOSE=true TIMEOUT=2m TEST_PATTERN=SFlowWithPCAP
+    #- ./coverage.sh --coveralls
 
 after_success:
     - export BUILD_TAG=$(date +%Y-%m-%d).${TRAVIS_JOB_NUMBER}
